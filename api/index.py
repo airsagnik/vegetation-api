@@ -9,6 +9,7 @@ import ee
 
 # Decode Base64 JSON from environment variable
 key_b64 = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
+
 key_str = base64.b64decode(key_b64).decode('utf-8')
 key_json = json.loads(base64.b64decode(key_b64))
 
