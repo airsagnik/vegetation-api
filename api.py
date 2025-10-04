@@ -2,9 +2,21 @@ import ee
 from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 import calendar
+import os
+import json
+import base64
+import ee
+
+# Decode Base64 JSON key to temp file
+key_b64 = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
+key_json = json.loads(base64.b64decode(key_b64))
+with open("/tmp/service-account.json", "w") as f:
+    json.dump(key_json, f)
+
+ee.Initialize(project="secret-proton-309304", opt_credentials=ee.ServiceAccountCredentials(None, "/tmp/service-account.json"))
 
 # Initialize Earth Engine
-ee.Initialize(project="secret-proton-309304")
+#ee.Initialize(project="secret-proton-309304")
 
 app = Flask(__name__)
 
