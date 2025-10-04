@@ -1,4 +1,3 @@
-import ee
 from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 import calendar
@@ -6,6 +5,7 @@ import os
 import json
 import base64
 import ee
+
 
 # Decode Base64 JSON from environment variable
 key_b64 = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
