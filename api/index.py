@@ -42,7 +42,7 @@ def get_last4months_with_data(aoi):
     months_checked = 0
     max_months_check = 24  # prevent infinite loop
 
-    while len(results) < 6 and months_checked < max_months_check:
+    while len(results) < 12 and months_checked < max_months_check:
         month_date = today - timedelta(days=months_back*30)  # approx month
         year = month_date.year
         month = month_date.month
