@@ -7,13 +7,20 @@ import json
 import base64
 import ee
 
-# Decode Base64 JSON key to temp file
+# Decode Base64 JSON from environment variable
 key_b64 = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
+key_str = base64.b64decode(key_b64).decode('utf-8')
 key_json = json.loads(base64.b64decode(key_b64))
-with open("/tmp/service-account.json", "w") as f:
-    json.dump(key_json, f)
 
-ee.Initialize(project="secret-proton-309304", opt_credentials=ee.ServiceAccountCredentials(None, "/tmp/service-account.json"))
+# Create ServiceAccountCredentials directly from JSON dict
+credentials = ee.ServiceAccountCredentials(
+    key_json['client_email'],
+    None,
+    key_str
+)
+
+# Initialize Earth Engine
+ee.Initialize(credentials=credentials, project="secret-proton-309304")
 
 # Initialize Earth Engine
 #ee.Initialize(project="secret-proton-309304")
