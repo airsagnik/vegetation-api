@@ -5,6 +5,7 @@ import os
 import json
 import base64
 import ee
+from flask_cors import CORS
 
 
 # Decode Base64 JSON from environment variable
@@ -27,6 +28,7 @@ ee.Initialize(credentials=credentials, project="secret-proton-309304")
 #ee.Initialize(project="secret-proton-309304")
 
 app = Flask(__name__)
+CORS(app)
 
 def get_last4months_with_data(aoi):
     """

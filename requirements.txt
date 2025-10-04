@@ -9,6 +9,7 @@ colorama==0.4.6
 earthengine-api==1.6.10
 fastapi==0.118.0
 Flask==3.1.2
+flask-cors==6.0.1
 google-api-core==2.25.2
 google-api-python-client==2.184.0
 google-auth==2.41.1
